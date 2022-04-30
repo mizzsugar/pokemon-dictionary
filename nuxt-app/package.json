@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "nuxt build",
     "dev": "nuxt dev",
+    "build": "cp node_modules/.prisma/client/package.json node_modules/.prisma && nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint": "npx eslint --ext .ts,.js,.vue .",
@@ -19,5 +19,10 @@
     "eslint-plugin-vue": "^8.7.1",
     "nuxt": "3.0.0-rc.1",
     "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.13.0",
+    "prisma": "^3.13.0",
+    "sqlite3": "^5.0.6"
   }
 }
