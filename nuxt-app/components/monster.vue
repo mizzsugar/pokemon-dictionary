@@ -1,19 +1,17 @@
-<script setup>
-  import { MonsterType } from '@/repository/types';
-  // monsterをinputする
+<script lang="ts" setup>
+  import { MonsterType } from '../repository/types';
+  import { PropType } from 'nuxt/dist/app/compat/capi';
+
   const props = defineProps({
-    name: {
-      type: String,
+    monster: {
+      type: Object as PropType<MonsterType>,
       required: true,
-      default: '',
     }
   })
-  const id = 1
-  const { monster } = await useFetch(() => `/api/monsters/${id}`)
 </script>
 <template>
   <div>
-    <h2 v-text="name" />
+    <h2 v-text="props.monster.name" />
     <div>
       <h3>タイプ</h3>
       <p>草</p>
