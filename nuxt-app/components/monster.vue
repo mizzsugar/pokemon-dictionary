@@ -14,8 +14,11 @@
     <h2 v-text="props.monster.name" />
     <div>
       <h3>タイプ</h3>
-      <p>草</p>
-      <p>毒</p>
+      <p
+        v-for="monsterType in props.monster.types"
+        :key="monsterType.type.key"
+        v-text="monsterType.type.displayName"
+      />
     </div>
   </div>
 </template>

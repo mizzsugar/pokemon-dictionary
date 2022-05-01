@@ -11,5 +11,6 @@ export default defineEventHandler(async (event) => {
     where: {
       id: parseInt(event.context.params.id),
     },
+    include: { types: { include: { type: true } } },
   })
 });
