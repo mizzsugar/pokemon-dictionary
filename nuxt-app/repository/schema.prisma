@@ -8,8 +8,27 @@ datasource db {
 }
 
 model Monster {
-  id Int @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
   name String
 
+  types MonsterType[]
   @@map("monsters")
+}
+
+model Type {
+  key          String @id @unique
+  displayName String @map("display_name")
+
+  MonsterType MonsterType[]
+  @@map("types")
+}
+
+model MonsterType {
+  type      Type    @relation(fields: [typeKey], references: [key])
+  typeKey   String  @map("type_key")
+  monster   Monster @relation(fields: [monsterId], references: [id])
+  monsterId Int  @map("monster_id")
+
+  @@id([typeKey, monsterId])
+  @@map("monster_types")
 }
