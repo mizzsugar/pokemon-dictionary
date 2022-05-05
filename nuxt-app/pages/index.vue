@@ -1,6 +1,6 @@
 <script lang="ts" setup>
   const { data } = await useFetch(() => `/api`)
-  const { data: monsters } = await useFetch(() => `/api/monsters`)
+  const { data: pokemons } = await useFetch(() => `/api/pokemons`)
 </script>
 
 <template>
@@ -10,11 +10,11 @@
     </div>
     <ul>
       <li
-        v-for="monster in monsters"
-        :key="monster.id"
+        v-for="pokemon in pokemons"
+        :key="pokemon.id"
       >
-        <nuxt-link :to="`/monsters/${monster.id}`">
-          <MonsterListItem :monster="monster" />
+        <nuxt-link :to="`/pokemons/${pokemon.id}`">
+          <PokemonListItem :pokemon="pokemon" />
         </nuxt-link>
       </li>
     </ul>

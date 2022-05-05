@@ -3,12 +3,12 @@
   import { PropType } from 'nuxt/dist/app/compat/capi';
 
   const props = defineProps({
-    monster: {
+    pokemon: {
       type: Object as PropType<PokemonType>,
       required: true,
     }
   })
 </script>
 <template>
-  <p>{{ monster.name }}</p>
+  <p>{{ pokemon.name }}</p>
 </template>
