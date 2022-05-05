@@ -12,7 +12,7 @@ model Monster {
   name String
 
   types MonsterType[]
-  @@map("monsters")
+  @@map("pokemons")
 }
 
 model Type {
@@ -27,8 +27,8 @@ model MonsterType {
   type      Type    @relation(fields: [typeKey], references: [key])
   typeKey   String  @map("type_key")
   monster   Monster @relation(fields: [monsterId], references: [id])
-  monsterId Int  @map("monster_id")
+  monsterId Int  @map("pokemon_id")
 
   @@id([typeKey, monsterId])
-  @@map("monster_types")
+  @@map("pokemon_types")
 }
