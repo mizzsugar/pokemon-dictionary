@@ -7,7 +7,7 @@ const prisma = new PrismaClient({
 
 
 export default defineEventHandler(async (event) => {
-  return await prisma.monster.findUnique({
+  return await prisma.pokemon.findUnique({
     where: {
       id: parseInt(event.context.params.id),
     },

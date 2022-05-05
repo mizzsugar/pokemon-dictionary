@@ -7,7 +7,7 @@ const prisma = new PrismaClient({
 
 
 export default defineEventHandler(async (event) => {
-  return await prisma.monster.findMany({
+  return await prisma.pokemon.findMany({
     include: { types: { include: { type: true } } },
   })
 })

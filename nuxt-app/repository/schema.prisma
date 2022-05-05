@@ -7,11 +7,11 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model Monster {
+model Pokemon {
   id   Int    @id @default(autoincrement())
   name String
 
-  types MonsterType[]
+  types PokemonType[]
   @@map("pokemons")
 }
 
@@ -19,16 +19,16 @@ model Type {
   key          String @id @unique
   displayName String @map("display_name")
 
-  MonsterType MonsterType[]
+  pokemonType PokemonType[]
   @@map("types")
 }
 
-model MonsterType {
+model PokemonType {
   type      Type    @relation(fields: [typeKey], references: [key])
   typeKey   String  @map("type_key")
-  monster   Monster @relation(fields: [monsterId], references: [id])
-  monsterId Int  @map("pokemon_id")
+  pokemon   Pokemon @relation(fields: [pokemonId], references: [id])
+  pokemonId Int  @map("pokemon_id")
 
-  @@id([typeKey, monsterId])
+  @@id([typeKey, pokemonId])
   @@map("pokemon_types")
 }
