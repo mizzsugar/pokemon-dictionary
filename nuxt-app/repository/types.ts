@@ -1,10 +1,18 @@
-import { Pokemon, PokemonType as _MonsterType, Type as _Type } from '@prisma/client';
+import { Pokemon, PokemonType as _PokemonType, Type as _Type } from '@prisma/client';
 
-export type MonsterType = Pokemon & {
+export type PokemonType = Pokemon & {
   id: number;
   name: string;
-  types: Array<Type>;
+  types: Array<PokemonTypeType>;
 };
+
+
+export type PokemonTypeType = _PokemonType & {
+  typeKye: string;
+  pokemonId: number;
+  type: Type;
+}
+
 
 export type Type = _Type & {
   key: number;

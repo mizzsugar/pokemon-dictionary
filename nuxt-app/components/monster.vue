@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-  import { MonsterType } from '../repository/types';
+  import { PokemonType } from '../repository/types';
   import { PropType } from 'nuxt/dist/app/compat/capi';
 
   const props = defineProps({
     monster: {
-      type: Object as PropType<MonsterType>,
+      type: Object as PropType<PokemonType>,
       required: true,
     }
   })
@@ -15,9 +15,9 @@
     <div>
       <h3>タイプ</h3>
       <p
-        v-for="monsterType in props.monster.types"
-        :key="monsterType.type.key"
-        v-text="monsterType.type.displayName"
+        v-for="type in props.monster.types"
+        :key="type.type.key"
+        v-text="type.type.displayName"
       />
     </div>
   </div>
