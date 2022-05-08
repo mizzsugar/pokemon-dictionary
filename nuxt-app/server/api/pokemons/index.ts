@@ -1,13 +1,5 @@
-import pkg from '@prisma/client';
-const { PrismaClient } = pkg;
-
-const prisma = new PrismaClient({
-  log: ['query']
-})
-
+import { Guest } from "@/usecase/guest"
 
 export default defineEventHandler(async (event) => {
-  return await prisma.pokemon.findMany({
-    include: { types: { include: { type: true } } },
-  })
+  return await Guest.query()
 })

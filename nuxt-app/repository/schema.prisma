@@ -19,7 +19,7 @@ model Type {
   key          String @id @unique
   displayName String @map("display_name")
 
-  pokemonType PokemonType[]
+  pokemonType PokemonType[] @relation("pokemon_types")
   @@map("types")
 }
 

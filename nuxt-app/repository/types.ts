@@ -3,12 +3,12 @@ import { Pokemon, PokemonType as _PokemonType, Type as _Type } from '@prisma/cli
 export type PokemonType = Pokemon & {
   id: number;
   name: string;
-  types: Array<PokemonTypeType>;
+  types?: Array<PokemonTypeType>;
 };
 
 
 export type PokemonTypeType = _PokemonType & {
-  typeKye: string;
+  typeKey: string;
   pokemonId: number;
   type: Type;
 }
@@ -16,5 +16,5 @@ export type PokemonTypeType = _PokemonType & {
 
 export type Type = _Type & {
   key: number;
-  name: string;
+  displayName: string;
 };
