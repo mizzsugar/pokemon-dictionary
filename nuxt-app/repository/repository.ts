@@ -25,8 +25,9 @@ export class PokemonRepository {
     return convertPokemonFromRepository(pokemon);
   }
 
-  static async query(): Promise<Pokemon[]> {
+  static async query(name: string): Promise<Pokemon[]> {
     const pokemons = await prisma.pokemon.findMany({
+      where: {name: {contains: name}},
       include: { types: { include: { type: true } } },
     })
     return pokemons.map(pokemon => convertPokemonFromRepository(pokemon));

@@ -6,7 +6,7 @@ export class Guest {
     return PokemonRepository.fetchPokemonById(id)
   }
 
-  static query(): Promise<Pokemon[]> {
-    return PokemonRepository.query()
+  static query(name: string): Promise<Pokemon[]> {
+    return PokemonRepository.query(name)
   }
 }

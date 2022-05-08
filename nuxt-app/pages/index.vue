@@ -1,6 +1,14 @@
 <script lang="ts" setup>
   const { data } = await useFetch(() => `/api`)
-  const { data: pokemons } = await useFetch(() => `/api/pokemons`)
+  const { data: pokemons } = await useFetch(`/api/pokemons`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    // TODO: 検索窓を作成して検索窓に入力した値を入れる
+    // https://github.com/mizzsugar/pokemon-dictionary/issues/2
+    body: JSON.stringify({name: 'フシギ'}),
+  })
 </script>
 
 <template>

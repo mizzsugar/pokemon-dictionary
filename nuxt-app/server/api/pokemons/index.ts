@@ -1,5 +1,6 @@
 import { Guest } from "@/usecase/guest"
 
 export default defineEventHandler(async (event) => {
-  return await Guest.query()
+  const body = await useBody(event)
+  return await Guest.query(JSON.parse(body).name)
 })
