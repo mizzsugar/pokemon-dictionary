@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-
-  const name = ref('')
   const { data } = await useAsyncData('sample', () => 
     $fetch(`/api`),
     {initialCache: false},
