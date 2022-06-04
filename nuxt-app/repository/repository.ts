@@ -1,6 +1,7 @@
 import pkg from '@prisma/client';
 
 import { Pokemon } from "@/domain/entities";
+import { PokemonFilter } from '@/domain/dto';
 import { convertPokemonFromRepository } from "@/domain/converter";
 
 
@@ -25,9 +26,18 @@ export class PokemonRepository {
     return convertPokemonFromRepository(pokemon);
   }
 
-  static async query(name: string): Promise<Pokemon[]> {
+  static async query(filter?: PokemonFilter): Promise<Pokemon[]> {
+    if (!filter) {
+      return PokemonRepository.all();
+    }
     const pokemons = await prisma.pokemon.findMany({
-      where: {name: {contains: name}},
+      where: {name: {contains: filter.name}},
+      include: { types: { include: { type: true } } },
+    })
+    return pokemons.map(pokemon => convertPokemonFromRepository(pokemon));
+  }
+  static async all(): Promise<Pokemon[]> {
+    const pokemons = await prisma.pokemon.findMany({
       include: { types: { include: { type: true } } },
     })
     return pokemons.map(pokemon => convertPokemonFromRepository(pokemon));
