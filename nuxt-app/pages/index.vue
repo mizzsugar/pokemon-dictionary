@@ -47,9 +47,9 @@
   </div>
 </template>
 
-<style scoped>
-.hello {
-  font-size: 3rem;
-  padding: 10rem;
-}
+<style lang="sass" scoped>
+.hello
+  font-size: 3rem
+  padding: 10rem
+
 </style>

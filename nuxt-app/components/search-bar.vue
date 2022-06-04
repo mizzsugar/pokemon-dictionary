@@ -20,9 +20,9 @@ const search = () => {
     </button>
   </div>
 </template>
-<style scoped>
+<style lang="sass" scoped>
 
-.search {
-  display: flex;
-}
+.search
+  display: flex
+
 </style>
