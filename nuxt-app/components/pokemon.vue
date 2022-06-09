@@ -14,11 +14,10 @@
     <h2 v-text="props.pokemon.name" />
     <div>
       <h3>タイプ</h3>
-      <TypeLabel />
-      <p
+      <TypeLabel
         v-for="type in props.pokemon.types"
         :key="type"
-        v-text="type"
+        :type="type"
       />
     </div>
   </div>
