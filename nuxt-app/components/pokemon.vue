@@ -14,11 +14,20 @@
     <h2 v-text="props.pokemon.name" />
     <div>
       <h3>タイプ</h3>
-      <TypeLabel
-        v-for="type in props.pokemon.types"
-        :key="type"
-        :type="type"
-      />
+      <div class="types">
+        <TypeLabel
+          v-for="type in props.pokemon.types"
+          :key="type"
+          :type="type"
+        />
+      </div>
     </div>
   </div>
 </template>
+<style lang="sass" scoped>
+
+.types
+  display: flex
+  gap: 4px
+
+</style>

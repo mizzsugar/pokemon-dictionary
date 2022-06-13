@@ -29,6 +29,14 @@
     )
 }
 
+  const selectType = (selectedTypes: string[], type: string) => {
+    if (selectedTypes.includes(type)) {
+      const index = selectedTypes.indexOf(type);
+      selectedTypes.splice(index, 1);
+    } else {
+      selectedTypes.push(type);
+    }
+  }
 </script>
 
 <template>
@@ -36,7 +44,10 @@
     <div class="hello">
       Hello Nuxt {{ data.api }}!
     </div>
-    <SearchBar @search-button-click="search" />
+    <SearchBar
+      @search-button-click="search"
+      @select-type="selectType"
+    />
     <nuxt-link
       v-for="pokemon in pokemons"
       :key="pokemon.id"
